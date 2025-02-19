@@ -1,0 +1,166 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weekly Attendance Checklist</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        .status input[type="checkbox"] {
+            transform: scale(1.5);
+        }
+        .late, .absent {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Weekly Attendance Checklist</h1>
+
+    <h2>Instructions:</h2>
+    <p>Mark the attendance status for each team member weekly. Tick the appropriate box to indicate if they are present, late, or absent.</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Week</th>
+                <th>Student Name</th>
+                <th>Present</th>
+                <th>Late</th>
+                <th>Absent</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Week 1 -->
+            <tr>
+                <td rowspan="4">Week 1</td>
+                <td>Moh</td>
+                <td class="status"><input type="checkbox" name="moh_week1_present"></td>
+                <td class="status late"><input type="checkbox" name="moh_week1_late"></td>
+                <td class="status absent"><input type="checkbox" name="moh_week1_absent"></td>
+            </tr>
+            <tr>
+                <td>Vishnu</td>
+                <td class="status"><input type="checkbox" name="vishnu_week1_present"></td>
+                <td class="status late"><input type="checkbox" name="vishnu_week1_late"></td>
+                <td class="status absent"><input type="checkbox" name="vishnu_week1_absent"></td>
+            </tr>
+            <tr>
+                <td>Neethu</td>
+                <td class="status"><input type="checkbox" name="neethu_week1_present"></td>
+                <td class="status late"><input type="checkbox" name="neethu_week1_late"></td>
+                <td class="status absent"><input type="checkbox" name="neethu_week1_absent"></td>
+            </tr>
+            <tr>
+                <td>Rose</td>
+                <td class="status"><input type="checkbox" name="rose_week1_present"></td>
+                <td class="status late"><input type="checkbox" name="rose_week1_late"></td>
+                <td class="status absent"><input type="checkbox" name="rose_week1_absent"></td>
+            </tr>
+
+            <!-- Week 2 -->
+            <tr>
+                <td rowspan="4">Week 2</td>
+                <td>Moh</td>
+                <td class="status"><input type="checkbox" name="moh_week2_present"></td>
+                <td class="status late"><input type="checkbox" name="moh_week2_late"></td>
+                <td class="status absent"><input type="checkbox" name="moh_week2_absent"></td>
+            </tr>
+            <tr>
+                <td>Vishnu</td>
+                <td class="status"><input type="checkbox" name="vishnu_week2_present"></td>
+                <td class="status late"><input type="checkbox" name="vishnu_week2_late"></td>
+                <td class="status absent"><input type="checkbox" name="vishnu_week2_absent"></td>
+            </tr>
+            <tr>
+                <td>Neethu</td>
+                <td class="status"><input type="checkbox" name="neethu_week2_present"></td>
+                <td class="status late"><input type="checkbox" name="neethu_week2_late"></td>
+                <td class="status absent"><input type="checkbox" name="neethu_week2_absent"></td>
+            </tr>
+            <tr>
+                <td>Rose</td>
+                <td class="status"><input type="checkbox" name="rose_week2_present"></td>
+                <td class="status late"><input type="checkbox" name="rose_week2_late"></td>
+                <td class="status absent"><input type="checkbox" name="rose_week2_absent"></td>
+            </tr>
+
+            <!-- Week 3 -->
+            <tr>
+                <td rowspan="4">Week 3</td>
+                <td>Moh</td>
+                <td class="status"><input type="checkbox" name="moh_week3_present"></td>
+                <td class="status late"><input type="checkbox" name="moh_week3_late"></td>
+                <td class="status absent"><input type="checkbox" name="moh_week3_absent"></td>
+            </tr>
+            <tr>
+                <td>Vishnu</td>
+                <td class="status"><input type="checkbox" name="vishnu_week3_present"></td>
+                <td class="status late"><input type="checkbox" name="vishnu_week3_late"></td>
+                <td class="status absent"><input type="checkbox" name="vishnu_week3_absent"></td>
+            </tr>
+            <tr>
+                <td>Neethu</td>
+                <td class="status"><input type="checkbox" name="neethu_week3_present"></td>
+                <td class="status late"><input type="checkbox" name="neethu_week3_late"></td>
+                <td class="status absent"><input type="checkbox" name="neethu_week3_absent"></td>
+            </tr>
+            <tr>
+                <td>Rose</td>
+                <td class="status"><input type="checkbox" name="rose_week3_present"></td>
+                <td class="status late"><input type="checkbox" name="rose_week3_late"></td>
+                <td class="status absent"><input type="checkbox" name="rose_week3_absent"></td>
+            </tr>
+
+            <!-- Week 4 -->
+            <tr>
+                <td rowspan="4">Week 4</td>
+                <td>Moh</td>
+                <td class="status"><input type="checkbox" name="moh_week4_present"></td>
+                <td class="status late"><input type="checkbox" name="moh_week4_late"></td>
+                <td class="status absent"><input type="checkbox" name="moh_week4_absent"></td>
+            </tr>
+            <tr>
+                <td>Vishnu</td>
+                <td class="status"><input type="checkbox" name="vishnu_week4_present"></td>
+                <td class="status late"><input type="checkbox" name="vishnu_week4_late"></td>
+                <td class="status absent"><input type="checkbox" name="vishnu_week4_absent"></td>
+            </tr>
+            <tr>
+                <td>Neethu</td>
+                <td class="status"><input type="checkbox" name="neethu_week4_present"></td>
+                <td class="status late"><input type="checkbox" name="neethu_week4_late"></td>
+                <td class="status absent"><input type="checkbox" name="neethu_week4_absent"></td>
+            </tr>
+            <tr>
+                <td>Rose</td>
+                <td class="status"><input type="checkbox" name="rose_week4_present"></td>
+                <td class="status late"><input type="checkbox" name="rose_week4_late"></td>
+                <td class="status absent"><input type="checkbox" name="rose_week4_absent"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
+```

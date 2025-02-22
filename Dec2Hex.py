@@ -13,12 +13,12 @@ def decimal_to_hex(decimal_value):
     return hexadecimal
 
 if __name__ == "__main__":
-    if len(sys.argv) > 1:
-        try:
-            decimal_value = int(sys.argv[1])
-            decimal_to_hex(decimal_value)
-        except ValueError:
-            print("Please provide a valid integer.")
-    else:
-        print("Usage: python script.py <decimal_number>")
-
+    if len(sys.argv) != 2:
+        print("Error: Please provide exactly one integer input.")
+        sys.exit(1)
+    try:
+        decimal_value = int(sys.argv[1])
+        decimal_to_hex(decimal_value)
+    except ValueError:
+        print("Error: Input must be a valid integer.")
+        sys.exit(1)

@@ -1,48 +1,27 @@
-import sys
+import subprocess, sys
 
-def decimal_to_hex(decimal_value):
-    """
-    Converts a given decimal value to its hexadecimal representation.
-    
-    Args:
-        decimal_value (int): The decimal number to convert.
-    
-    Returns:
-        str: The hexadecimal representation of the input decimal number.
-    """
-    # Define the mapping for hexadecimal characters
-    hex_chars = "0123456789ABCDEF"
-    hexadecimal = ""
-    num = decimal_value
+def run_program(args):
+    """Utility to run Dec2Hex.py with given args and return CompletedProcess."""
+    return subprocess.run([sys.executable, "Dec2Hex.py", *args],
+                          capture_output=True, text=True)
 
-    print(f"Converting the Decimal Value {num} to Hex...")
+def test_valid_conversion():
+    """Test a normal decimal to hex conversion."""
+    result = run_program(["15"])
+    assert result.returncode == 0
+    # The program prints the hex representation; ensure it's correct
+    assert "Hexadecimal representation is: F" in result.stdout
 
-    # Handle the special case where the input is 0
-    if num == 0:
-        print("Hexadecimal representation is: 0")
-        return "0"
+def test_no_input():
+    """Test running the program with no arguments should produce an error and non-zero exit."""
+    result = run_program([])  # no arguments
+    # Expect an error message and an exit code indicating failure
+    assert result.returncode != 0, "Expected non-zero exit code for missing input"
+    assert "No input provided" in result.stdout  or "Usage" in result.stdout
 
-    # Perform the conversion
-    while num != 0:
-        rem = num % 16  # Get the remainder when divided by 16
-        hexadecimal = hex_chars[rem] + hexadecimal  # Prepend the corresponding hex character
-        num //= 16  # Update num by integer division with 16
-
-    print(f"Hexadecimal representation is: {hexadecimal}")
-    return hexadecimal
-
-
-if __name__ == "__main__":
-    # Check if exactly one argument is provided (excluding the script name)
-    if len(sys.argv) != 2:
-        print("Error: Please provide exactly one integer input.")
-        sys.exit(1)
-
-    try:
-        # Attempt to parse the input as an integer
-        decimal_value = int(sys.argv[1])
-        decimal_to_hex(decimal_value)
-    except ValueError:
-        # Handle cases where the input is not a valid integer
-        print("Error: Input must be a valid integer.")
-        sys.exit(1)
+def test_invalid_input():
+    """Test that a non-integer input is handled gracefully."""
+    result = run_program(["ABC"])
+    # The program should not crash; it should return code 0 (handled) but print an error message
+    assert result.returncode == 0, "Invalid input should not cause a non-zero exit (gracefully handled)"
+    assert "Please provide a valid integer." in result.stdout

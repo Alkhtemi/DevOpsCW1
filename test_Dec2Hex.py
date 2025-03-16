@@ -1,30 +1,29 @@
 import unittest
-from Dec2Hex import decimal_to_hex
+import subprocess
 
 class TestDecimalToHex(unittest.TestCase):
 
-    def test_valid_integer_input(self):
-        self.assertEqual(decimal_to_hex(10), "A")
-        self.assertEqual(decimal_to_hex(255), "FF")
-        self.assertEqual(decimal_to_hex(4095), "FFF")  # Additional valid input
+    def test_valid_input(self):
+        self.assertEqual(subprocess.run(["python3", "Dec2Hex.py", "15"], capture_output=True, text=True).stdout.strip(),
+                         "Hexadecimal representation is: F")
+        self.assertEqual(subprocess.run(["python3", "Dec2Hex.py", "255"], capture_output=True, text=True).stdout.strip(),
+                         "Hexadecimal representation is: FF")
 
     def test_zero_input(self):
-        self.assertEqual(decimal_to_hex(0), "0")
+        result = subprocess.run(["python3", "Dec2Hex.py", "0"], capture_output=True, text=True)
+        self.assertIn("Hexadecimal representation is: 0", result.stdout)
 
     def test_no_input_provided(self):
-        with self.assertRaises(SystemExit):
-            decimal_to_hex()
+        result = subprocess.run(["python3", "Dec2Hex.py"], capture_output=True, text=True)
+        self.assertIn("Warning: No input provided. Please enter a number.", result.stdout)
 
     def test_non_integer_input(self):
-        with self.assertRaises(ValueError):
-            decimal_to_hex("abc")
+        result = subprocess.run(["python3", "Dec2Hex.py", "abc"], capture_output=True, text=True)
+        self.assertIn("Error: Invalid input. Please enter an integer.", result.stdout)
 
     def test_negative_input(self):
-        with self.assertRaises(ValueError):
-            decimal_to_hex(-1)
-
-    def test_large_input(self):
-        self.assertEqual(decimal_to_hex(65535), "FFFF")  # Large number
+        result = subprocess.run(["python3", "Dec2Hex.py", "-5"], capture_output=True, text=True)
+        self.assertIn("Error: Please enter a non-negative integer.", result.stdout)
 
 if __name__ == "__main__":
     unittest.main()

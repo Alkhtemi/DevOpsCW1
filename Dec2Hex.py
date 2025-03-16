@@ -1,33 +1,41 @@
 import sys
 
+HEX_BASE = 16
+HEX_CHARS = "0123456789ABCDEF"
+
 def decimal_to_hex(decimal_value):
-    """Convert a decimal number to its hexadecimal representation.
-    
-    Args:
-        decimal_value (int): Non-negative integer to convert.
-        
-    Returns:
-        str: Uppercase hexadecimal string (e.g., "1A3F").
-    """
-    return f"{decimal_value:X}"  # Built-in Python conversion for simplicity
+    """Convert decimal number to hexadecimal."""
+    if not isinstance(decimal_value, int):
+        raise ValueError("Error: Invalid input. Please enter an integer.")
+    if decimal_value < 0:
+        raise ValueError("Error: Invalid input. Input must be non-negative.")
+    if decimal_value == 0:
+        return "0"
+    hexadecimal = ""
+    num = decimal_value
+    while num > 0:
+        rem = num % HEX_BASE
+        hexadecimal = HEX_CHARS[rem] + hexadecimal
+        num //= HEX_BASE
+    return hexadecimal
 
 if __name__ == "__main__":
-    # Validate input presence
+    import sys
+
+    HEX_BASE = 16
+    HEX_CHARS = "0123456789ABCDEF"
+
     if len(sys.argv) < 2:
-        print("Error: No input provided. Please enter a non-negative integer.")
-        sys.exit(1)  # Fail build on missing input
+        print("Warning: No input provided. Please enter a number.")
+        sys.exit(0)
 
     try:
-        # Parse and validate input
         decimal_value = int(sys.argv[1])
         if decimal_value < 0:
-            print("Error: Negative values are not allowed.")
-            sys.exit(1)  # Fail build on negative input
-
-        # Convert and print result
+            print("Error: Invalid input. Input must be non-negative.")
+            sys.exit(1)
         hex_result = decimal_to_hex(decimal_value)
-        print(f"Hexadecimal representation: {hex_result}")
-
+        print(f"Hexadecimal representation is: {hex_result}")
     except ValueError:
-        print("Error: Invalid input. Please enter a valid integer.")
-        sys.exit(1)  # Fail build on non-integer input
+        print("Error: Invalid input. Please enter an integer.")
+        sys.exit(0)

@@ -1,8 +1,5 @@
-<<<<<<< HEAD
-=======
-# unitTest 1
+# XUnitTest 1
 
->>>>>>> 6d8ddcd (Update test_Dec2Hex.py)
 import unittest
 import subprocess
 

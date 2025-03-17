@@ -1,6 +1,4 @@
-<<<<<<< HEAD
-# unitTest 2
->>>>>>> 798019150367b1fe3887bf56b1b2b6fa53ae06a0
+# unitTest 2 test
 import unittest
 import subprocess
 
